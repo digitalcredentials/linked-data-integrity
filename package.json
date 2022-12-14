@@ -3,11 +3,12 @@
   "description": "A VerifiableCredential Data Integrity library for Javascript/Typescript (for use in Node.js, browser, React Native).",
   "version": "0.0.1",
   "scripts": {
-    "build": "npm run clear && tsc -p tsconfig.json",
+    "build": "npm run clear && tsc -d && tsc -p tsconfig.json",
     "clear": "rimraf dist/*",
     "lint": "eslint .",
     "lint:fix": "eslint --fix .",
     "prepare": "npm run build",
+    "prettier": "prettier src --write",
     "rebuild": "npm run clear && npm run build",
     "test": "npm run lint && npm run test-node",
     "test-karma": "karma start karma.conf.js",
@@ -17,17 +18,12 @@
     "dist",
     "src",
     "README.md",
-    "LICENSE.md"
+    "LICENSE.md",
+    "CHANGELOG.md"
   ],
-  "module": "dist/index.js",
-  "browser": "dist/index.js",
+  "main": "dist/index.js",
+  "module": "dist/esm/index.js",
   "types": "dist/index.d.ts",
-  "exports": {
-    ".": {
-      "import": "./dist/index.js"
-    },
-    "./package.json": "./package.json"
-  },
   "devDependencies": {
     "@types/chai": "^4.3.3",
     "@types/mocha": "^10.0.0",
@@ -68,8 +64,10 @@
     "spec": "test/**/*.ts"
   },
   "keywords": [
-    "interop",
-    "alliance"
+    "linked data",
+    "vc",
+    "jsonld",
+    "signatures"
   ],
   "engines": {
     "node": ">=16.0"
