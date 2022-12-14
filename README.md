@@ -1,7 +1,7 @@
-# Verifiable Credentials Data Integrity _(@digitalcredentials/data-integrity)_
+# Verifiable Credentials Data Integrity _(@digitalcredentials/linked-data-integrity)_
 
-[![Build status](https://img.shields.io/github/workflow/status/digitalcredentials/data-integrity/Node.js%20CI)](https://github.com/digitalcredentials/data-integrity/actions?query=workflow%3A%22Node.js+CI%22)
-[![NPM Version](https://img.shields.io/npm/v/@digitalcredentials/data-integrity.svg)](https://npm.im/@digitalcredentials/data-integrity)
+[![Build status](https://img.shields.io/github/workflow/status/digitalcredentials/linked-data-integrity/Node.js%20CI)](https://github.com/digitalcredentials/linked-data-integrity/actions?query=workflow%3A%22Node.js+CI%22)
+[![NPM Version](https://img.shields.io/npm/v/@digitalcredentials/linked-data-integrity.svg)](https://npm.im/@digitalcredentials/linked-data-integrity)
 
 > A VerifiableCredential Data Integrity library for Javascript/Typescript (for use in Node.js, browser, React Native).
 
@@ -16,7 +16,8 @@
 
 ## Background
 
-TBD
+See [Verifiable Credential Data Integrity 1.0](https://w3c.github.io/vc-data-integrity/)
+specification.
 
 ## Security
 
@@ -31,7 +32,7 @@ TBD
 To install via NPM:
 
 ```
-npm install @digitalcredentials/data-integrity
+npm install @digitalcredentials/linked-data-integrity
 ```
 
 ### Development
@@ -39,8 +40,8 @@ npm install @digitalcredentials/data-integrity
 To install locally (for development):
 
 ```
-git clone https://github.com/digitalcredentials/data-integrity.git
-cd data-integrity
+git clone https://github.com/digitalcredentials/linked-data-integrity.git
+cd linked-data-integrity
 npm install
 ```
 

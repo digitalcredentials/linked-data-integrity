@@ -1,4 +1,4 @@
-# data-integrity Changelog
+# linked-data-integrity Changelog
 
 ## 1.0.0 - TBD
 
