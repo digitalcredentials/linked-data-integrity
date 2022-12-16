@@ -11,7 +11,10 @@ module.exports = {
     'prettier/prettier': 'off',
     'arrow-body-style': 'off',
     'prefer-arrow-callback': 'off',
+    '@typescript-eslint/consistent-type-assertions': 'off',
+    '@typescript-eslint/prefer-ts-expect-error': 'off',
     '@typescript-eslint/return-await': 'off',
-    '@typescript-eslint/prefer-ts-expect-error': 'off'
+    '@typescript-eslint/strict-boolean-expressions': 'off',
+    'no-empty-pattern': 'off'
   }
 }

@@ -12,15 +12,18 @@
     "baseUrl": ".",
     "allowSyntheticDefaultImports": true,
     "skipLibCheck": true,
-    "resolveJsonModule": true
+    "resolveJsonModule": true,
+    "types": ["node", "mocha"],
+    "typeRoots": ["src/declarations.d.ts"]
   },
   "ts-node": {
     "files": true
   },
   "include": [
     "src/**/*",
+    "test/*.ts",
     ".eslintrc.js",
     "karma.conf.js"
   ],
-  "exclude": ["node_modules", "dist", "test"]
+  "exclude": ["node_modules", "dist"]
 }
