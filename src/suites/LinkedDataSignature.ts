@@ -27,7 +27,7 @@ export abstract class LinkedDataSignature extends LinkedDataProofSuite {
   key: any
   signer?: Signer
   verifier?: Verifier
-  useNativeCanonize: boolean
+  useNativeCanonize?: boolean
   date?: Date
   private _hashCache: any
   /**
@@ -97,7 +97,7 @@ export abstract class LinkedDataSignature extends LinkedDataProofSuite {
     key: any
     signer: Signer
     verifier: Verifier
-    useNativeCanonize: boolean
+    useNativeCanonize?: boolean
     contextUrl: string
   }) {
     super({ type })
