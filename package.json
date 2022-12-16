@@ -3,7 +3,7 @@
   "description": "A VerifiableCredential Data Integrity library for Javascript/Typescript (for use in Node.js, browser, React Native).",
   "version": "0.0.1",
   "scripts": {
-    "build": "npm run clear && tsc -d && tsc -p tsconfig.json",
+    "build": "npm run clear && tsc -d && tsc -p tsconfig.esm.json",
     "clear": "rimraf dist/*",
     "lint": "eslint .",
     "lint:fix": "eslint --fix .",
@@ -12,7 +12,7 @@
     "rebuild": "npm run clear && npm run build",
     "test": "npm run lint && npm run test-node",
     "test-karma": "karma start karma.conf.js",
-    "test-node": "cross-env NODE_ENV=test TS_NODE_COMPILER_OPTIONS='{\"module\": \"commonjs\" }' mocha -r ts-node/register 'test/*.ts'"
+    "test-node": "cross-env NODE_ENV=test TS_NODE_COMPILER_OPTIONS='{\"module\": \"commonjs\" }' mocha -r ts-node/register --project tsconfig.spec.json 'test/*.ts'"
   },
   "files": [
     "dist",
@@ -24,9 +24,15 @@
   "main": "dist/index.js",
   "module": "dist/esm/index.js",
   "types": "dist/index.d.ts",
+  "dependencies": {
+    "@digitalbazaar/security-context": "^1.0.0",
+    "@digitalcredentials/sha256-universal": "^1.1.1",
+    "base-x": "^4.0.0",
+    "jsonld": "^8.1.0"
+  },
   "devDependencies": {
     "@types/chai": "^4.3.3",
-    "@types/mocha": "^10.0.0",
+    "@types/mocha": "^10.0.1",
     "@types/node": "^18.11.0",
     "@typescript-eslint/eslint-plugin": "^5.40.0",
     "@typescript-eslint/parser": "^5.40.0",
