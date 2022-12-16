@@ -2,7 +2,7 @@
  * Copyright (c) 2022 Digital Credentials Consortium. (Conversion to Typescript)
  * Copyright (c) 2022 Digital Bazaar, Inc. All rights reserved.
  */
-import { base58btc } from '../base58btc'
+import { base58btc } from '../baseX'
 import { LinkedDataProofSuite } from './LinkedDataProofSuite'
 import {
   DateType,
