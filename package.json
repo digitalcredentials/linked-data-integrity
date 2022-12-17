@@ -1,7 +1,7 @@
 {
   "name": "@digitalcredentials/linked-data-integrity",
   "description": "A VerifiableCredential Data Integrity library for Javascript/Typescript (for use in Node.js, browser, React Native).",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "scripts": {
     "build": "npm run clear && tsc -d && tsc -p tsconfig.esm.json",
     "clear": "rimraf dist/*",
