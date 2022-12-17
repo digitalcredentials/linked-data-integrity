@@ -1,6 +1,6 @@
 # Verifiable Credentials Data Integrity _(@digitalcredentials/linked-data-integrity)_
 
-[![Build status](https://img.shields.io/github/workflow/status/digitalcredentials/linked-data-integrity/Node.js%20CI)](https://github.com/digitalcredentials/linked-data-integrity/actions?query=workflow%3A%22Node.js+CI%22)
+[![Build status](https://img.shields.io/github/actions/workflow/status/digitalcredentials/linked-data-integrity/main.yml?branch=main)](https://github.com/digitalcredentials/linked-data-integrity/actions?query=workflow%3A%22Node.js+CI%22)
 [![NPM Version](https://img.shields.io/npm/v/@digitalcredentials/linked-data-integrity.svg)](https://npm.im/@digitalcredentials/linked-data-integrity)
 
 > A VerifiableCredential Data Integrity library for Javascript/Typescript (for use in Node.js, browser, React Native).
