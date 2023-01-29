@@ -11,7 +11,6 @@ import {
   VerificationMethod,
   Verifier
 } from '../types'
-import { ProofPurpose } from "../purposes";
 
 export abstract class JwsLinkedDataSignature extends LinkedDataSignature {
   alg: string
@@ -20,7 +19,7 @@ export abstract class JwsLinkedDataSignature extends LinkedDataSignature {
    * @param {object} options - Options hashmap.
    * @param {string} options.type - Provided by subclass.
    * @param {string} options.alg - JWS alg provided by subclass.
-   * @param {object} [options.LDKeyClass] - Provided by subclass or subclass
+   * @param {object} [options.KeyPairClass] - Provided by subclass or subclass
    *   overrides `getVerificationMethod`.
    *
    * Either a `key` OR at least one of `signer`/`verifier` is required.
@@ -53,7 +52,7 @@ export abstract class JwsLinkedDataSignature extends LinkedDataSignature {
   constructor({
     type,
     alg,
-    LDKeyClass,
+    KeyPairClass,
     key,
     signer,
     verifier,
@@ -64,18 +63,18 @@ export abstract class JwsLinkedDataSignature extends LinkedDataSignature {
   }: {
     type: string
     alg: string
-    LDKeyClass: any
-    key: any
-    signer: Signer
-    verifier: Verifier
-    proof: Proof
-    date: DateType
+    KeyPairClass: any
+    key?: any
+    signer?: Signer
+    verifier?: Verifier
+    proof?: Proof
+    date?: DateType
     contextUrl: string
     useNativeCanonize?: boolean
   }) {
     super({
       type,
-      LDKeyClass,
+      KeyPairClass,
       contextUrl,
       key,
       signer,
@@ -126,7 +125,9 @@ export abstract class JwsLinkedDataSignature extends LinkedDataSignature {
     */
 
     // create JWS data and sign
-    const encodedHeader: string = base64url.encode(new TextEncoder().encode(JSON.stringify(header)))
+    const encodedHeader: string = base64url.encode(
+      new TextEncoder().encode(JSON.stringify(header))
+    )
 
     const data = _createJws({ encodedHeader, verifyData })
 
@@ -198,7 +199,7 @@ export abstract class JwsLinkedDataSignature extends LinkedDataSignature {
 
     const verifier =
       this.verifier ??
-      (await this.LDKeyClass.from(verificationMethod)).verifier()
+      (await this.KeyPairClass.from(verificationMethod)).verifier()
 
     return verifier.verify({ data, signature })
   }
@@ -259,12 +260,16 @@ export abstract class JwsLinkedDataSignature extends LinkedDataSignature {
    *
    * @returns {Promise<boolean>} Whether a match for the proof was found.
    */
-  async matchProof({ proof, document, purpose, documentLoader }: {
-    proof: Proof, document: object, purpose: ProofPurpose, documentLoader: DocumentLoader
+  async matchProof({
+    proof,
+    document,
+    documentLoader
+  }: {
+    proof: Proof
+    document: object
+    documentLoader: DocumentLoader
   }): Promise<boolean> {
-    if (
-      !(await super.matchProof({ proof, document, documentLoader }))
-    ) {
+    if (!(await super.matchProof({ proof, document, documentLoader }))) {
       return false
     }
     // NOTE: When subclassing this suite: Extending suites will need to check
@@ -293,7 +298,13 @@ export abstract class JwsLinkedDataSignature extends LinkedDataSignature {
  * @param {Uint8Array} options.verifyData - Payload to sign/verify.
  * @returns {Uint8Array} A combined byte array for signing.
  */
-function _createJws({ encodedHeader, verifyData }: {encodedHeader: string, verifyData: Uint8Array}): Uint8Array {
+function _createJws({
+  encodedHeader,
+  verifyData
+}: {
+  encodedHeader: string
+  verifyData: Uint8Array
+}): Uint8Array {
   const encodedHeaderBytes = new TextEncoder().encode(encodedHeader + '.')
 
   // concatenate the two uint8arrays

@@ -17,14 +17,14 @@ import {
   Verifier
 } from '../types'
 import { concat, w3cDate } from '../util'
-import { ProofPurpose } from '../purposes/ProofPurpose'
+import { ProofPurpose } from '../purposes'
 
 export abstract class LinkedDataSignature extends LinkedDataProofSuite {
-  LDKeyClass: any
+  KeyPairClass: any
   contextUrl: string
-  proof: Proof
+  proof?: Proof
   verificationMethod?: VerificationMethod
-  key: any
+  key?: any
   signer?: Signer
   verifier?: Verifier
   useNativeCanonize?: boolean
@@ -38,8 +38,7 @@ export abstract class LinkedDataSignature extends LinkedDataProofSuite {
    *
    * @param {object} options - Options hashmap.
    * @param {string} options.type - Suite name, provided by subclass.
-   * @typedef LDKeyPair
-   * @param {LDKeyPair} LDKeyClass - The crypto-ld key class that this suite
+   * @param {KeyPairClass} KeyPairClass - The keypair key class that this suite
    *   will use to sign/verify signatures. Provided by subclass. Used
    *   during the `verifySignature` operation, to create an instance (containing
    *   a `verifier()` property) of a public key fetched via a `documentLoader`.
@@ -82,7 +81,7 @@ export abstract class LinkedDataSignature extends LinkedDataProofSuite {
   constructor({
     type,
     proof,
-    LDKeyClass,
+    KeyPairClass,
     date,
     key,
     signer,
@@ -91,17 +90,17 @@ export abstract class LinkedDataSignature extends LinkedDataProofSuite {
     contextUrl
   }: {
     type: string
-    proof: Proof
-    LDKeyClass: any
+    proof?: Proof
+    KeyPairClass: any
     date?: DateType
-    key: any
-    signer: Signer
-    verifier: Verifier
+    key?: any
+    signer?: Signer
+    verifier?: Verifier
     useNativeCanonize?: boolean
     contextUrl: string
   }) {
     super({ type })
-    this.LDKeyClass = LDKeyClass
+    this.KeyPairClass = KeyPairClass
     this.contextUrl = contextUrl
     this.proof = proof
     const vm = _processSignatureParams({
@@ -507,7 +506,7 @@ function _includesContext({
 /**
  * See constructor docstring for param details.
  *
- * @returns {{verificationMethod: string, key: LDKeyPair,
+ * @returns {{verificationMethod: string, key: KeyPairClass,
  *   signer: {sign: Function, id: string},
  *   verifier: {verify: Function, id: string}}} - Validated and initialized
  *   key-related parameters.

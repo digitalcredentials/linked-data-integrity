@@ -12,7 +12,8 @@
     "baseUrl": ".",
     "allowSyntheticDefaultImports": true,
     "skipLibCheck": true,
-    "resolveJsonModule": true
+    "resolveJsonModule": true,
+    "typeRoots": ["./node_modules/@types", "./src/declarations.d.ts", "./types.ts"]
   },
   "ts-node": {
     "files": true

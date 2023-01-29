@@ -73,7 +73,7 @@ export async function sign(
         `A URL "${url as string}" could not be fetched; you need to pass ` +
           '"documentLoader" or resolve the URL before calling "sign".'
       )
-      err.cause = e
+      // err.cause = e
       throw err
     }
     throw e
