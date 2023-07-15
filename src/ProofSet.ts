@@ -7,13 +7,13 @@ import { serializeError } from 'serialize-error'
 
 import { constants } from './constants'
 import {
-  DocumentLoader,
-  Proof,
-  VerificationMethod,
-  VerificationResult
+  type DocumentLoader,
+  type Proof,
+  type VerificationMethod,
+  type VerificationResult
 } from './types'
-import { LinkedDataProofSuite } from './suites/LinkedDataProofSuite'
-import { ProofPurpose } from './purposes/ProofPurpose'
+import { type LinkedDataProofSuite } from './suites/LinkedDataProofSuite'
+import { type ProofPurpose } from './purposes/ProofPurpose'
 import { VerificationError } from './VerificationError'
 
 export class ProofSet {

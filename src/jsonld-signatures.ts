@@ -4,9 +4,9 @@
  */
 import { ProofSet } from './ProofSet'
 import { VerificationError } from './VerificationError'
-import { ProofPurpose } from './purposes/ProofPurpose'
-import { DocumentLoader, VerificationResult } from './types'
-import { LinkedDataSignature } from './suites/LinkedDataSignature'
+import { type ProofPurpose } from './purposes/ProofPurpose'
+import { type DocumentLoader, type VerificationResult } from './types'
+import { type LinkedDataSignature } from './suites/LinkedDataSignature'
 
 /**
  * Cryptographically signs the provided document by adding a `proof` section,
